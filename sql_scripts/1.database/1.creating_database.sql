@@ -1,0 +1,2 @@
+create database stg_brightlearn_store
+create database dwh_brightlearn_store
