@@ -1,7 +1,7 @@
 IF NOT EXISTS (select * from information_schema.tables where table_name = 'stg_dim_customers')
 
 
-create table [stg_brightlearn_store].[dbo].[stg_dim_customer](
+create drop table [dwh_brightlearn_store].[dbo].[dwh_dim_customer](
   [Customer_ID] INT IDENTITY(1,1) PRIMARY KEY,
   [customer_first_name] [varchar](50) NULL,
   [customer_last_name] [varchar](50) NULL,

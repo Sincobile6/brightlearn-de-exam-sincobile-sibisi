@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.1.stg_to_dwh_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|solutionrelative:3.1.stg_to_dwh_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+      "AbsoluteMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.1.clean_to_dwh_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|solutionrelative:3.1.clean_to_dwh_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\2.1.stg_to_clean_dim_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|solutionrelative:2.1.stg_to_clean_dim_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+      "AbsoluteMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.5.clean_to_dwh_dim_product.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|solutionrelative:3.5.clean_to_dwh_dim_product.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\1.1.create_load_stg_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|solutionrelative:1.1.create_load_stg_cust.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\0.1.load_csv_to_stg_db.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|solutionrelative:0.1.load_csv_to_stg_db.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
+      "AbsoluteMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.6.clean_to_dwh_dim_payment.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
+      "RelativeMoniker": "D:0:0:{FE08AAAE-4A41-CC34-5085-3334961F4FF2}|Brightlearn_shop.dtproj|solutionrelative:3.6.clean_to_dwh_dim_payment.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,49 +27,37 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "3.1.stg_to_dwh_cust.dtsx [Design]",
-              "DocumentMoniker": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.1.stg_to_dwh_cust.dtsx",
-              "RelativeDocumentMoniker": "3.1.stg_to_dwh_cust.dtsx",
-              "ToolTip": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.1.stg_to_dwh_cust.dtsx [Design]",
-              "RelativeToolTip": "3.1.stg_to_dwh_cust.dtsx [Design]",
+              "Title": "3.1.clean_to_dwh_cust.dtsx [Design]",
+              "DocumentMoniker": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.1.clean_to_dwh_cust.dtsx",
+              "RelativeDocumentMoniker": "3.1.clean_to_dwh_cust.dtsx",
+              "ToolTip": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.1.clean_to_dwh_cust.dtsx [Design]",
+              "RelativeToolTip": "3.1.clean_to_dwh_cust.dtsx [Design]",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMlSURBVDhPjZQ7bJtVGIaf41vsOk7ihICdxK1wiWiTFhW1QBEDapEQAnVoOzGUAalDNybECgsINqQOrBUDGzAgIUCVijoUqAQoTuM4JW4dO3Yuvvz2/9v//TC4/mM7ROGVPumc73zvq/d85yIAPvniq9/S8ydf4hComk5lZ/fHv\u002B7fu/nd11/\u002BMLyOlDLQG59Mz5CamRosGMLdP1ZZWlk9r1mIK\u002B99wM/f37rTUmqqVyCE8ANcePPS9RdfWJidS0xxJDxyYOSL21iOGx6NRie3qsrs9NOJWkdt1rSW0u5p\u002Bjz1/wm/348r5eT2bu1iPJG\u002BFhmdmO9fHxDUTYfthuGFptsY1l5O1V0e5ov8nckSG42GipvlKy1Ve65fw\u002BshQHajxbf3Kt78jTPTTI\u002BF\u002BObXEgAtxSCeSPPOsyksy\u002Ban23f62F0MOHQl6K6P9vgM2sQsVjjWzTnQHksg506wcPYsr7\u002B8SDAYRAjRT4dhQQCkizA0hK4hbPNJTiKMDgHLIBYOMTE\u002BNszyMCA4Hg2yOBflVNzmdNxiOuwSiwRYTI1yatJmcdwiHnLoOP2sQQz08HgyyvFktD8FwLULKSSgW6BaUKjUhks87N/yAdAtaFmgGNC2wR8MAYf08J\u002Byxq3bG14sPW7iuNCxu86ahqRhSFRTIBFw2KEomsVyUSNTD7JUD1Jp\u002B9EdaJmgGJKG0XWomRLp2CBlPx2GBQEQPuRIBBmOYooAqtlzBnUdqk2TmqKju0Fik0mS6dML8dSZixw5dm6foE9A2OcSaZSJ1Es4quqJNXRodCSlrSaPNhq0gzMsnH\u002BbS\u002B9//OG5q5//wtF3bzJ8yidSMW5MRTAsUG1whZ\u002Bm2d1m0wTNAsuFuaciXH0tyW5Dp7SlUSlU90z1Btn1Te7ef8DSgxwrqznW13KsraywtpxhM5ehsZ5BLy7jNre6RCnptC2q9Q4t7ckD6Dk0TZs/Mzl2qgffrx4CE0cZOfY8hbLKWkEh\u002B1ihUvV\u002Br65gPv9webepy0Kh2M/9Tzwz/2rSFImU1Drkyy0elVVKO3uC\u002By/SYUi89RGzlz8dTqPlfyf72Sv/AiuphR\u002BNLPK3AAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-07-14T02:27:08.719Z",
+              "WhenOpened": "2026-07-17T16:03:46.357Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "2.1.stg_to_clean_dim_cust.dtsx [Design]",
-              "DocumentMoniker": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\2.1.stg_to_clean_dim_cust.dtsx",
-              "RelativeDocumentMoniker": "2.1.stg_to_clean_dim_cust.dtsx",
-              "ToolTip": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\2.1.stg_to_clean_dim_cust.dtsx [Design]",
-              "RelativeToolTip": "2.1.stg_to_clean_dim_cust.dtsx [Design]",
+              "Title": "3.5.clean_to_dwh_dim_product.dtsx [Design]",
+              "DocumentMoniker": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.5.clean_to_dwh_dim_product.dtsx",
+              "RelativeDocumentMoniker": "3.5.clean_to_dwh_dim_product.dtsx",
+              "ToolTip": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.5.clean_to_dwh_dim_product.dtsx [Design]",
+              "RelativeToolTip": "3.5.clean_to_dwh_dim_product.dtsx [Design]",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMlSURBVDhPjZQ7bJtVGIaf41vsOk7ihICdxK1wiWiTFhW1QBEDapEQAnVoOzGUAalDNybECgsINqQOrBUDGzAgIUCVijoUqAQoTuM4JW4dO3Yuvvz2/9v//TC4/mM7ROGVPumc73zvq/d85yIAPvniq9/S8ydf4hComk5lZ/fHv\u002B7fu/nd11/\u002BMLyOlDLQG59Mz5CamRosGMLdP1ZZWlk9r1mIK\u002B99wM/f37rTUmqqVyCE8ANcePPS9RdfWJidS0xxJDxyYOSL21iOGx6NRie3qsrs9NOJWkdt1rSW0u5p\u002Bjz1/wm/348r5eT2bu1iPJG\u002BFhmdmO9fHxDUTYfthuGFptsY1l5O1V0e5ov8nckSG42GipvlKy1Ve65fw\u002BshQHajxbf3Kt78jTPTTI\u002BF\u002BObXEgAtxSCeSPPOsyksy\u002Ban23f62F0MOHQl6K6P9vgM2sQsVjjWzTnQHksg506wcPYsr7\u002B8SDAYRAjRT4dhQQCkizA0hK4hbPNJTiKMDgHLIBYOMTE\u002BNszyMCA4Hg2yOBflVNzmdNxiOuwSiwRYTI1yatJmcdwiHnLoOP2sQQz08HgyyvFktD8FwLULKSSgW6BaUKjUhks87N/yAdAtaFmgGNC2wR8MAYf08J\u002Byxq3bG14sPW7iuNCxu86ahqRhSFRTIBFw2KEomsVyUSNTD7JUD1Jp\u002B9EdaJmgGJKG0XWomRLp2CBlPx2GBQEQPuRIBBmOYooAqtlzBnUdqk2TmqKju0Fik0mS6dML8dSZixw5dm6foE9A2OcSaZSJ1Es4quqJNXRodCSlrSaPNhq0gzMsnH\u002BbS\u002B9//OG5q5//wtF3bzJ8yidSMW5MRTAsUG1whZ\u002Bm2d1m0wTNAsuFuaciXH0tyW5Dp7SlUSlU90z1Btn1Te7ef8DSgxwrqznW13KsraywtpxhM5ehsZ5BLy7jNre6RCnptC2q9Q4t7ckD6Dk0TZs/Mzl2qgffrx4CE0cZOfY8hbLKWkEh\u002B1ihUvV\u002Br65gPv9webepy0Kh2M/9Tzwz/2rSFImU1Drkyy0elVVKO3uC\u002By/SYUi89RGzlz8dTqPlfyf72Sv/AiuphR\u002BNLPK3AAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-07-14T01:17:05.254Z",
+              "WhenOpened": "2026-07-17T15:51:37.161Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "1.1.create_load_stg_cust.dtsx [Design]",
-              "DocumentMoniker": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\1.1.create_load_stg_cust.dtsx",
-              "RelativeDocumentMoniker": "1.1.create_load_stg_cust.dtsx",
-              "ToolTip": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\1.1.create_load_stg_cust.dtsx [Design]",
-              "RelativeToolTip": "1.1.create_load_stg_cust.dtsx [Design]",
+              "Title": "3.6.clean_to_dwh_dim_payment.dtsx [Design]",
+              "DocumentMoniker": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.6.clean_to_dwh_dim_payment.dtsx",
+              "RelativeDocumentMoniker": "3.6.clean_to_dwh_dim_payment.dtsx",
+              "ToolTip": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\3.6.clean_to_dwh_dim_payment.dtsx [Design]",
+              "RelativeToolTip": "3.6.clean_to_dwh_dim_payment.dtsx [Design]",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMlSURBVDhPjZQ7bJtVGIaf41vsOk7ihICdxK1wiWiTFhW1QBEDapEQAnVoOzGUAalDNybECgsINqQOrBUDGzAgIUCVijoUqAQoTuM4JW4dO3Yuvvz2/9v//TC4/mM7ROGVPumc73zvq/d85yIAPvniq9/S8ydf4hComk5lZ/fHv\u002B7fu/nd11/\u002BMLyOlDLQG59Mz5CamRosGMLdP1ZZWlk9r1mIK\u002B99wM/f37rTUmqqVyCE8ANcePPS9RdfWJidS0xxJDxyYOSL21iOGx6NRie3qsrs9NOJWkdt1rSW0u5p\u002Bjz1/wm/348r5eT2bu1iPJG\u002BFhmdmO9fHxDUTYfthuGFptsY1l5O1V0e5ov8nckSG42GipvlKy1Ve65fw\u002BshQHajxbf3Kt78jTPTTI\u002BF\u002BObXEgAtxSCeSPPOsyksy\u002Ban23f62F0MOHQl6K6P9vgM2sQsVjjWzTnQHksg506wcPYsr7\u002B8SDAYRAjRT4dhQQCkizA0hK4hbPNJTiKMDgHLIBYOMTE\u002BNszyMCA4Hg2yOBflVNzmdNxiOuwSiwRYTI1yatJmcdwiHnLoOP2sQQz08HgyyvFktD8FwLULKSSgW6BaUKjUhks87N/yAdAtaFmgGNC2wR8MAYf08J\u002Byxq3bG14sPW7iuNCxu86ahqRhSFRTIBFw2KEomsVyUSNTD7JUD1Jp\u002B9EdaJmgGJKG0XWomRLp2CBlPx2GBQEQPuRIBBmOYooAqtlzBnUdqk2TmqKju0Fik0mS6dML8dSZixw5dm6foE9A2OcSaZSJ1Es4quqJNXRodCSlrSaPNhq0gzMsnH\u002BbS\u002B9//OG5q5//wtF3bzJ8yidSMW5MRTAsUG1whZ\u002Bm2d1m0wTNAsuFuaciXH0tyW5Dp7SlUSlU90z1Btn1Te7ef8DSgxwrqznW13KsraywtpxhM5ehsZ5BLy7jNre6RCnptC2q9Q4t7ckD6Dk0TZs/Mzl2qgffrx4CE0cZOfY8hbLKWkEh\u002B1ihUvV\u002Br65gPv9webepy0Kh2M/9Tzwz/2rSFImU1Drkyy0elVVKO3uC\u002By/SYUi89RGzlz8dTqPlfyf72Sv/AiuphR\u002BNLPK3AAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-07-13T21:11:53.448Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "0.1.load_csv_to_stg_db.dtsx [Design]",
-              "DocumentMoniker": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\0.1.load_csv_to_stg_db.dtsx",
-              "RelativeDocumentMoniker": "0.1.load_csv_to_stg_db.dtsx",
-              "ToolTip": "C:\\Sincobile Sibisi 2025\\Capstone\\brightlearn-de-exam-sincobile-sibisi\\etl_pipeline\\Brightlearn_shop\\0.1.load_csv_to_stg_db.dtsx [Design]",
-              "RelativeToolTip": "0.1.load_csv_to_stg_db.dtsx [Design]",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMlSURBVDhPjZQ7bJtVGIaf41vsOk7ihICdxK1wiWiTFhW1QBEDapEQAnVoOzGUAalDNybECgsINqQOrBUDGzAgIUCVijoUqAQoTuM4JW4dO3Yuvvz2/9v//TC4/mM7ROGVPumc73zvq/d85yIAPvniq9/S8ydf4hComk5lZ/fHv\u002B7fu/nd11/\u002BMLyOlDLQG59Mz5CamRosGMLdP1ZZWlk9r1mIK\u002B99wM/f37rTUmqqVyCE8ANcePPS9RdfWJidS0xxJDxyYOSL21iOGx6NRie3qsrs9NOJWkdt1rSW0u5p\u002Bjz1/wm/348r5eT2bu1iPJG\u002BFhmdmO9fHxDUTYfthuGFptsY1l5O1V0e5ov8nckSG42GipvlKy1Ve65fw\u002BshQHajxbf3Kt78jTPTTI\u002BF\u002BObXEgAtxSCeSPPOsyksy\u002Ban23f62F0MOHQl6K6P9vgM2sQsVjjWzTnQHksg506wcPYsr7\u002B8SDAYRAjRT4dhQQCkizA0hK4hbPNJTiKMDgHLIBYOMTE\u002BNszyMCA4Hg2yOBflVNzmdNxiOuwSiwRYTI1yatJmcdwiHnLoOP2sQQz08HgyyvFktD8FwLULKSSgW6BaUKjUhks87N/yAdAtaFmgGNC2wR8MAYf08J\u002Byxq3bG14sPW7iuNCxu86ahqRhSFRTIBFw2KEomsVyUSNTD7JUD1Jp\u002B9EdaJmgGJKG0XWomRLp2CBlPx2GBQEQPuRIBBmOYooAqtlzBnUdqk2TmqKju0Fik0mS6dML8dSZixw5dm6foE9A2OcSaZSJ1Es4quqJNXRodCSlrSaPNhq0gzMsnH\u002BbS\u002B9//OG5q5//wtF3bzJ8yidSMW5MRTAsUG1whZ\u002Bm2d1m0wTNAsuFuaciXH0tyW5Dp7SlUSlU90z1Btn1Te7ef8DSgxwrqznW13KsraywtpxhM5ehsZ5BLy7jNre6RCnptC2q9Q4t7ckD6Dk0TZs/Mzl2qgffrx4CE0cZOfY8hbLKWkEh\u002B1ihUvV\u002Br65gPv9webepy0Kh2M/9Tzwz/2rSFImU1Drkyy0elVVKO3uC\u002By/SYUi89RGzlz8dTqPlfyf72Sv/AiuphR\u002BNLPK3AAAAAElFTkSuQmCC",
-              "WhenOpened": "2026-07-13T21:11:10.403Z",
+              "WhenOpened": "2026-07-17T12:27:11.382Z",
               "EditorCaption": " [Design]"
             }
           ]

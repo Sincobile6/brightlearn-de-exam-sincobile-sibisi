@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{C73D7DE9-08C0-4684-A17A-B3719CC01FA4}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{78D16CF2-75E5-4ECF-8A63-859374115C25}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -312,7 +312,7 @@
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select  UPPER(LEFT(customer_first_name, 1)) + LOWER(SUBSTRING(customer_first_name, 2, LEN(customer_first_name))) as customer_first_name,
              UPPER(LEFT(customer_last_name, 1)) + LOWER(SUBSTRING(customer_last_name, 2, LEN(customer_last_name))) as customer_last_name,
-              customer_email,
+              COALESCE(NULLIF(TRIM(customer_email),'  '), 'N/A') AS customer_email,
               customer_phone,
               customer_city,
               customer_province,
@@ -322,7 +322,7 @@ from(
 select *,
 row_number()over (partition by customer_first_name order by customer_email desc) as flag
 from [stg_brightlearn_store].[dbo].[stg_dim_customer])t
-where flag =1</property>
+where flag =1 and customer_ID !=1</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -641,6 +641,10 @@ where flag =1</property>
           Id="Package\create_clean_dim_cust"
           TopLeft="89.666662068003,44.4999997287989" />
         <NodeLayout
+          Size="176,41.6"
+          Id="Package\load_clean_dim_cust"
+          TopLeft="287.999987843137,185.966665828957" />
+        <NodeLayout
           Size="193.6,41.6"
           Id="Package\truncate_clean_dim_cust"
           TopLeft="137.999994399647,112.633332796958" />
@@ -678,10 +682,6 @@ where flag =1</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\load_clean_dim_cust"
-          TopLeft="287.999987843137,185.966665828957" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="234.799994399647,154.233332796958">
@@ -770,14 +770,6 @@ where flag =1</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\load_clean_dim_cust\stg_dim_customer">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\load_clean_dim_cust\clean_dim_customer">
     <Properties>
       <Property>
@@ -787,6 +779,14 @@ where flag =1</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load_clean_dim_cust\stg_dim_customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

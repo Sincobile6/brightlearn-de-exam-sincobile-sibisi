@@ -1,0 +1,713 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/17/2026 11:34:58 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RHA_NDZANI"
+  DTS:CreatorName="Rha_ndzani\Sincobile Sibisi"
+  DTS:DTSID="{D55C5528-E79F-44EB-8F31-959E0AB855A3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{568B55EA-17F4-4EBF-A601-F5D6FB70A5C2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D72C2E91-9532-4AB0-84B4-F8AFFF89D3E9}"
+      DTS:ObjectName="RHA_NDZANI.stg_brightlearn_store">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=RHA_NDZANI;Initial Catalog=stg_brightlearn_store;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{D72C2E91-9532-4AB0-84B4-F8AFFF89D3E9}RHA_NDZANI.stg_brightlearn_store;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\create_stg_dim_store"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{02D93958-4E9E-4216-B3EB-32807A4DC632}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="create_stg_dim_store"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D72C2E91-9532-4AB0-84B4-F8AFFF89D3E9}"
+          SQLTask:SqlStatementSource="CREATE OR ALTER PROCEDURE [dbo].[sp_create_stg_dim_supplier]&#xA;&#xA;AS&#xA;BEGIN&#xA;&#xA;&#xA; IF NOT EXISTS (select * from information_schema.tables where table_name = 'stg_dim_store')&#xA;&#xA;&#xA;&#xA;create table [stg_brightlearn_store].[dbo].[stg_dim_store](&#xA;    [Store_ID] INT IDENTITY(1,1) PRIMARY KEY,&#xA;&#x9;[cashier_name] [varchar](50) NULL,&#xA;    [store_name] [varchar](50) NULL,&#xA;&#x9;[store_city] [varchar](50) NULL,&#xA;&#x9;[store_province] [varchar](50) NULL,&#xA;&#x9;[store_region] [varchar](50) NULL,&#xA;&#x9;[store_manager] [varchar](50) NULL,&#xA;    [Load_date] DATETIME DEFAULT GETDATE()&#xA;  )&#xA;&#xA;  --insert data into table&#xA;&#xA;  insert into [stg_brightlearn_store].[dbo].[stg_dim_store] (&#xA;  cashier_name,&#xA;  store_name,&#xA;  store_city,&#xA;  store_province,&#xA;  store_region,&#xA;  store_manager&#xA;             &#xA;              )&#xA;select distinct&#xA;  cashier_name,&#xA;  store_name,&#xA;  store_city,&#xA;  store_province,&#xA;  store_region,&#xA;  store_manager&#xA;from [stg_brightlearn_store].[dbo].[raw_data]&#xA;&#xA;--select all data from dim_date&#xA;&#xA;select* from [stg_brightlearn_store].[dbo].[stg_dim_store]&#xA; END;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load_stg_dim_store"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{318B7147-7327-4F8C-A66B-756EF1B68757}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load_stg_dim_store"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load_stg_dim_store\raw_data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="raw_data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct
+  cashier_name,
+  store_name,
+  store_city,
+  store_province,
+  store_region,
+  store_manager
+from [stg_brightlearn_store].[dbo].[raw_data]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load_stg_dim_store\raw_data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  connectionManagerRefId="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[cashier_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[cashier_name]"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[cashier_name]"
+                      name="cashier_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_name]"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_name]"
+                      name="store_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_city]"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_city]"
+                      name="store_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_province]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_province]"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_province]"
+                      name="store_province"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_region]"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_region]"
+                      name="store_region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_manager]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_manager]"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_manager]"
+                      name="store_manager"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[cashier_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="cashier_name" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_name" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_city" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_province]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_province" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_region" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].ExternalColumns[store_manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_manager" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[cashier_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[cashier_name]"
+                      name="cashier_name" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_name]"
+                      name="store_name" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_city]"
+                      name="store_city" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_province]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_province]"
+                      name="store_province" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_region]"
+                      name="store_region" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[store_manager]"
+                      name="store_manager" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load_stg_dim_store\stg_dim_store"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="stg_dim_store"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg_dim_store]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load_stg_dim_store\stg_dim_store.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  connectionManagerRefId="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].Columns[cashier_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="cashier_name"
+                      externalMetadataColumnId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[cashier_name]"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[cashier_name]" />
+                    <inputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].Columns[store_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="store_name"
+                      externalMetadataColumnId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_name]" />
+                    <inputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].Columns[store_city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="store_city"
+                      externalMetadataColumnId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_city]"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_city]" />
+                    <inputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].Columns[store_province]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="store_province"
+                      externalMetadataColumnId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_province]"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_province]" />
+                    <inputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].Columns[store_region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="store_region"
+                      externalMetadataColumnId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_region]"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_region]" />
+                    <inputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].Columns[store_manager]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="store_manager"
+                      externalMetadataColumnId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_manager]"
+                      lineageId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output].Columns[store_manager]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[Store_ID]"
+                      dataType="i4"
+                      name="Store_ID" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[cashier_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="cashier_name" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_name" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_city" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_province]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_province" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_region" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[store_manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="store_manager" />
+                    <externalMetadataColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input].ExternalColumns[Load_date]"
+                      dataType="dbTimeStamp"
+                      name="Load_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load_stg_dim_store\stg_dim_store.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load_stg_dim_store\stg_dim_store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load_stg_dim_store\stg_dim_store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load_stg_dim_store\stg_dim_store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load_stg_dim_store.Paths[OLE DB Source Output]"
+              endId="Package\load_stg_dim_store\stg_dim_store.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load_stg_dim_store\raw_data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate_stg_dim_store"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CED76547-CC77-4ACF-BCAB-35519538559F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate_stg_dim_store"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D72C2E91-9532-4AB0-84B4-F8AFFF89D3E9}"
+          SQLTask:SqlStatementSource="truncate table [stg_brightlearn_store].[dbo].[stg_dim_store]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4477F5DD-6A88-4039-862F-4BD7BDB348D9}"
+      DTS:From="Package\truncate_stg_dim_store"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\create_stg_dim_store" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CB465390-358F-4C3B-B5B1-4086FCE47A0C}"
+      DTS:From="Package\create_stg_dim_store"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\load_stg_dim_store" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\truncate_stg_dim_store"
+          TopLeft="169.166657423808,54.5999996203184" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\create_stg_dim_store"
+          TopLeft="305.833316623338,243.533331639833" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\load_stg_dim_store"
+          TopLeft="284.166651140485,348.39999757727" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="262.766657423808,96.1999996203184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.266659199529,147.333332019514"
+              Start="0,0"
+              End="132.266659199529,139.833332019514">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.6666660097572" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.6666660097572"
+                    Point2="0,73.6666660097572"
+                    Point3="4,73.6666660097572" />
+                  <mssgle:LineSegment
+                    End="128.266659199529,73.6666660097572" />
+                  <mssgle:CubicBezierSegment
+                    Point1="128.266659199529,73.6666660097572"
+                    Point2="132.266659199529,73.6666660097572"
+                    Point3="132.266659199529,77.6666660097572" />
+                  <mssgle:LineSegment
+                    End="132.266659199529,139.833332019514" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="395.033316623337,285.133331639833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26.4666654828523,63.266665937437"
+              Start="0,0"
+              End="-26.4666654828523,55.766665937437">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.6333329687185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.6333329687185"
+                    Point2="0,31.6333329687185"
+                    Point3="-4,31.6333329687185" />
+                  <mssgle:LineSegment
+                    End="-22.4666654828523,31.6333329687185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.4666654828523,31.6333329687185"
+                    Point2="-26.4666654828523,31.6333329687185"
+                    Point3="-26.4666654828523,35.6333329687185" />
+                  <mssgle:LineSegment
+                    End="-26.4666654828523,55.766665937437" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load_stg_dim_store">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\load_stg_dim_store\raw_data"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\load_stg_dim_store\stg_dim_store"
+          TopLeft="202.166657560402,109.166666154398" />
+        <EdgeLayout
+          Id="Package\load_stg_dim_store.Paths[OLE DB Source Output]"
+          TopLeft="65.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="208.266657560402,62.0666661543979"
+              Start="0,0"
+              End="208.266657560402,54.5666661543979">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.0333330771989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.0333330771989"
+                    Point2="0,31.0333330771989"
+                    Point3="4,31.0333330771989" />
+                  <mssgle:LineSegment
+                    End="204.266657560402,31.0333330771989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="204.266657560402,31.0333330771989"
+                    Point2="208.266657560402,31.0333330771989"
+                    Point3="208.266657560402,35.0333330771989" />
+                  <mssgle:LineSegment
+                    End="208.266657560402,54.5666661543979" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load_stg_dim_store\raw_data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load_stg_dim_store\stg_dim_store">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

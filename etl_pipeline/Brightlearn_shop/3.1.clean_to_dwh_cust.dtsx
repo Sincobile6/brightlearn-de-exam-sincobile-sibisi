@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="RHA_NDZANI"
   DTS:CreatorName="Rha_ndzani\Sincobile Sibisi"
-  DTS:DTSID="{5D1D86FB-557E-4F41-BCA1-E857EDBCCEFA}"
+  DTS:DTSID="{A6C26C77-CC61-4F0F-9CCA-77E5A8DD1055}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="7177"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="3 1 clean_to_dwh_cust"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{21B33F6F-D65C-4BEB-961C-C8727FB4899F}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{0AFBEB73-3698-42BA-83D8-5472821643CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -82,7 +82,15 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select  customer_first_name,
+             customer_last_name,
+              customer_email,
+              customer_phone,
+              customer_city,
+              customer_province,
+              customer_loyalty_tier,
+              customer_since
+from[stg_brightlearn_store].[dbo].[clean_dim_customer]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -99,7 +107,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -118,15 +126,6 @@
                   refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[Customer_ID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[Customer_ID]"
-                      lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[Customer_ID]"
-                      name="Customer_ID"
-                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[customer_first_name]"
                       codePage="1252"
@@ -215,33 +214,20 @@
                       lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[customer_since]"
                       name="customer_since"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[Load_date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[Load_date]"
-                      lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[Load_date]"
-                      name="Load_date"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[Customer_ID]"
-                      dataType="i4"
-                      name="Customer_ID" />
-                    <externalMetadataColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[customer_first_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       name="customer_first_name" />
                     <externalMetadataColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[customer_last_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       name="customer_last_name" />
                     <externalMetadataColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[customer_email]"
@@ -279,10 +265,6 @@
                       dataType="str"
                       length="50"
                       name="customer_since" />
-                    <externalMetadataColumn
-                      refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[Load_date]"
-                      dataType="dbTimeStamp"
-                      name="Load_date" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -291,22 +273,17 @@
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[Customer_ID]"
-                      dataType="i4"
-                      lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[Customer_ID]"
-                      name="Customer_ID" />
-                    <outputColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_first_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_first_name]"
                       name="customer_first_name" />
                     <outputColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_last_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_last_name]"
                       name="customer_last_name" />
                     <outputColumn
@@ -351,11 +328,6 @@
                       length="50"
                       lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_since]"
                       name="customer_since" />
-                    <outputColumn
-                      refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[Load_date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[Load_date]"
-                      name="Load_date" />
                     <outputColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -446,12 +418,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dwh_loader_dim_customer\dwh_dim_customer.Inputs[OLE DB Destination Input].Columns[Customer_ID]"
-                      cachedDataType="i4"
-                      cachedName="Customer_ID"
-                      externalMetadataColumnId="Package\dwh_loader_dim_customer\dwh_dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Customer_ID]"
-                      lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[Customer_ID]" />
-                    <inputColumn
                       refId="Package\dwh_loader_dim_customer\dwh_dim_customer.Inputs[OLE DB Destination Input].Columns[customer_first_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -515,12 +481,6 @@
                       cachedName="customer_since"
                       externalMetadataColumnId="Package\dwh_loader_dim_customer\dwh_dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_since]"
                       lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[customer_since]" />
-                    <inputColumn
-                      refId="Package\dwh_loader_dim_customer\dwh_dim_customer.Inputs[OLE DB Destination Input].Columns[Load_date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Load_date"
-                      externalMetadataColumnId="Package\dwh_loader_dim_customer\dwh_dim_customer.Inputs[OLE DB Destination Input].ExternalColumns[Load_date]"
-                      lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].Columns[Load_date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -710,39 +670,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\dwh_loader_dim_customer\clean_dim_customer"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
           Size="168.8,41.6"
           Id="Package\dwh_loader_dim_customer\dwh_dim_customer"
-          TopLeft="172.999992487332,85.7666663171186" />
+          TopLeft="197.166656194462,112.099999258717" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\dwh_loader_dim_customer\clean_dim_customer"
+          TopLeft="16.3333327414261,15.0333332670397" />
         <EdgeLayout
           Id="Package\dwh_loader_dim_customer.Paths[OLE DB Source Output]"
-          TopLeft="92.7,47.1">
+          TopLeft="103.533332741426,56.6333332670397">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="164.699992487332,38.6666663171186"
+              EndConnector="178.033323453036,55.4666659916772"
               Start="0,0"
-              End="164.699992487332,31.1666663171186">
+              End="178.033323453036,47.9666659916772">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.3333331585593" />
+                    End="0,23.7333329958386" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.3333331585593"
-                    Point2="0,19.3333331585593"
-                    Point3="4,19.3333331585593" />
+                    Point1="0,23.7333329958386"
+                    Point2="0,27.7333329958386"
+                    Point3="4,27.7333329958386" />
                   <mssgle:LineSegment
-                    End="160.699992487332,19.3333331585593" />
+                    End="174.033323453036,27.7333329958386" />
                   <mssgle:CubicBezierSegment
-                    Point1="160.699992487332,19.3333331585593"
-                    Point2="164.699992487332,19.3333331585593"
-                    Point3="164.699992487332,23.3333331585593" />
+                    Point1="174.033323453036,27.7333329958386"
+                    Point2="178.033323453036,27.7333329958386"
+                    Point3="178.033323453036,31.7333329958386" />
                   <mssgle:LineSegment
-                    End="164.699992487332,31.1666663171186" />
+                    End="178.033323453036,47.9666659916772" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

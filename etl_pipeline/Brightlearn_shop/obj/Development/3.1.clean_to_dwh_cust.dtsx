@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="RHA_NDZANI"
   DTS:CreatorName="Rha_ndzani\Sincobile Sibisi"
-  DTS:DTSID="{5D1D86FB-557E-4F41-BCA1-E857EDBCCEFA}"
+  DTS:DTSID="{A6C26C77-CC61-4F0F-9CCA-77E5A8DD1055}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="7177"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="3 1 clean_to_dwh_cust"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{05681F60-E401-4749-BED3-0D0BC193E801}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{0AFBEB73-3698-42BA-83D8-5472821643CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -82,19 +82,15 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select  UPPER(LEFT(customer_first_name, 1)) + LOWER(SUBSTRING(customer_first_name, 2, LEN(customer_first_name))) as customer_first_name,
-             UPPER(LEFT(customer_last_name, 1)) + LOWER(SUBSTRING(customer_last_name, 2, LEN(customer_last_name))) as customer_last_name,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select  customer_first_name,
+             customer_last_name,
               customer_email,
               customer_phone,
               customer_city,
               customer_province,
               customer_loyalty_tier,
               customer_since
-from(
-select *,
-row_number()over (partition by customer_first_name order by customer_email desc) as flag
-from [stg_brightlearn_store].[dbo].[stg_dim_customer])t
-where flag =1</property>
+from[stg_brightlearn_store].[dbo].[clean_dim_customer]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -225,13 +221,13 @@ where flag =1</property>
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[customer_first_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       name="customer_first_name" />
                     <externalMetadataColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[customer_last_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       name="customer_last_name" />
                     <externalMetadataColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Output].ExternalColumns[customer_email]"
@@ -280,14 +276,14 @@ where flag =1</property>
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_first_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_first_name]"
                       name="customer_first_name" />
                     <outputColumn
                       refId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_last_name]"
                       codePage="1252"
                       dataType="str"
-                      length="51"
+                      length="50"
                       lineageId="Package\dwh_loader_dim_customer\clean_dim_customer.Outputs[OLE DB Source Error Output].Columns[customer_last_name]"
                       name="customer_last_name" />
                     <outputColumn
@@ -674,13 +670,13 @@ where flag =1</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\dwh_loader_dim_customer\clean_dim_customer"
-          TopLeft="16.3333327414261,15.0333332670397" />
-        <NodeLayout
           Size="168.8,41.6"
           Id="Package\dwh_loader_dim_customer\dwh_dim_customer"
           TopLeft="197.166656194462,112.099999258717" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\dwh_loader_dim_customer\clean_dim_customer"
+          TopLeft="16.3333327414261,15.0333332670397" />
         <EdgeLayout
           Id="Package\dwh_loader_dim_customer.Paths[OLE DB Source Output]"
           TopLeft="103.533332741426,56.6333332670397">

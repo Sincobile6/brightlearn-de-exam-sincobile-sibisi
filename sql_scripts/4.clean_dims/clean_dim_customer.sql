@@ -1,5 +1,5 @@
 IF NOT EXISTS (select * from information_schema.tables where table_name = 'clean_dim_customers')
-
+drop table [stg_brightlearn_store].[dbo].[clean_dim_customer]
 
 create table [stg_brightlearn_store].[dbo].[clean_dim_customer](
   [Customer_ID] INT IDENTITY(1,1) PRIMARY KEY,
@@ -28,7 +28,7 @@ create table [stg_brightlearn_store].[dbo].[clean_dim_customer](
               )
 select  UPPER(LEFT(customer_first_name, 1)) + LOWER(SUBSTRING(customer_first_name, 2, LEN(customer_first_name))),
              UPPER(LEFT(customer_last_name, 1)) + LOWER(SUBSTRING(customer_last_name, 2, LEN(customer_last_name))),
-              customer_email,
+              COALESCE(NULLIF(TRIM(customer_email),'  '), 'N/A') AS customer_email,
               customer_phone,
               customer_city,
               customer_province,
@@ -38,7 +38,7 @@ from(
 select *,
 row_number()over (partition by customer_first_name order by customer_email desc) as flag
 from [stg_brightlearn_store].[dbo].[stg_dim_customer])t
-where flag =1 
+where flag =1 and customer_ID !=1
 
 --select all data from dim_customers
 

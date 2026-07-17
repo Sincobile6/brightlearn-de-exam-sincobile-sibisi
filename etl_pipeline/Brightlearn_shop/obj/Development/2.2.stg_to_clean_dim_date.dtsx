@@ -1,0 +1,521 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/16/2026 10:06:01 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RHA_NDZANI"
+  DTS:CreatorName="Rha_ndzani\Sincobile Sibisi"
+  DTS:DTSID="{04E8F5CA-4F61-4F77-9694-4EC0EC5E6B8E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{00C254EC-E26A-497A-BBA8-810074964D7A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CE9B2CD5-B5F4-4C57-B283-4B87F1EE1B0D}"
+      DTS:ObjectName="RHA_NDZANI.stg_brightlearn_store">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=RHA_NDZANI;Initial Catalog=stg_brightlearn_store;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{CE9B2CD5-B5F4-4C57-B283-4B87F1EE1B0D}RHA_NDZANI.stg_brightlearn_store;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\create_clean_dim_date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CC477F1D-28F2-454B-B0C7-CA187FCFBA30}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="create_clean_dim_date"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE9B2CD5-B5F4-4C57-B283-4B87F1EE1B0D}"
+          SQLTask:SqlStatementSource="CREATE OR ALTER PROCEDURE [dbo].[sp_create_stg_dim_customer]&#xA;&#xA;AS&#xA;BEGIN&#xA;--create clean_dim_date&#xA;&#xA; if object_id ('[stg_brightlearn_store].[dbo].[clean_dim_date]') is not null&#xA;    drop table [stg_brightlearn_store].[dbo].[clean_dim_date];&#xA;&#xA;  &#xA;&#xA;&#xA;    CREATE TABLE [stg_brightlearn_store].[dbo].[clean_dim_date]&#xA;    ([dateID] INT IDENTITY(1,1) PRIMARY KEY,&#xA;    [transaction_date] [varchar](50) NULL,&#xA;    [load_date] DATETIME DEFAULT GETDATE()&#xA;    );&#xA;  &#xA;    INSERT INTO [stg_brightlearn_store].[dbo].[clean_dim_date]( &#xA;    transaction_date&#xA;)&#xA;SELECT &#xA;    &#xA;    COALESCE(&#xA;        TRY_CONVERT(DATE,  transaction_date, 101), &#xA;        TRY_CONVERT(DATE,  transaction_date, 103), &#xA;        TRY_CONVERT(DATE,  transaction_date, 111),&#xA;        TRY_CONVERT(DATE,  transaction_date, 120),&#xA;        TRY_PARSE( transaction_date AS DATE)       &#xA;    ) AS  transaction_date&#xA;&#xA;FROM [stg_brightlearn_store].[dbo].[stg_dim_date]&#xA;&#xA;    --view data in table&#xA;select *&#xA;from  [stg_brightlearn_store].[dbo].[clean_dim_date]&#xA;&#xA;end;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load_clean_dim_date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B6CB630F-7860-4DB8-9667-8BBC11FC2E2E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load_clean_dim_date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load_clean_dim_date\clean_dim_date"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="clean_dim_date"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[clean_dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load_clean_dim_date\clean_dim_date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  connectionManagerRefId="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input].Columns[transaction_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="transaction_date"
+                      externalMetadataColumnId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
+                      lineageId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Output].Columns[transaction_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input].ExternalColumns[dateID]"
+                      dataType="i4"
+                      name="dateID" />
+                    <externalMetadataColumn
+                      refId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="transaction_date" />
+                    <externalMetadataColumn
+                      refId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
+                      dataType="dbTimeStamp"
+                      name="load_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load_clean_dim_date\clean_dim_date.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load_clean_dim_date\clean_dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load_clean_dim_date\clean_dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load_clean_dim_date\clean_dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load_clean_dim_date\clean_dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load_clean_dim_date\stg_dim_date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="stg_dim_date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    
+    COALESCE(
+        TRY_CONVERT(DATE,  transaction_date, 101), 
+        TRY_CONVERT(DATE,  transaction_date, 103), 
+        TRY_CONVERT(DATE,  transaction_date, 111),
+        TRY_CONVERT(DATE,  transaction_date, 120),
+        TRY_PARSE( transaction_date AS DATE)       
+    ) AS  transaction_date
+
+FROM [stg_brightlearn_store].[dbo].[stg_dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load_clean_dim_date\stg_dim_date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  connectionManagerRefId="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Output].Columns[transaction_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Output].ExternalColumns[transaction_date]"
+                      length="10"
+                      lineageId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Output].Columns[transaction_date]"
+                      name="transaction_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Output].ExternalColumns[transaction_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="transaction_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Error Output].Columns[transaction_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Error Output].Columns[transaction_date]"
+                      name="transaction_date" />
+                    <outputColumn
+                      refId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load_clean_dim_date.Paths[OLE DB Source Output]"
+              endId="Package\load_clean_dim_date\clean_dim_date.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load_clean_dim_date\stg_dim_date.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate_clean_dim_date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2258CBF6-A089-4E05-A1F3-F5732B78192D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate_clean_dim_date"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CE9B2CD5-B5F4-4C57-B283-4B87F1EE1B0D}"
+          SQLTask:SqlStatementSource="truncate table [stg_brightlearn_store].[dbo].[clean_dim_date]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6202161D-0264-419B-A4DF-11BD55B9D580}"
+      DTS:From="Package\truncate_clean_dim_date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\create_clean_dim_date" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6EE0BADD-56B1-40C8-AF2E-1D963D668DA1}"
+      DTS:From="Package\create_clean_dim_date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\load_clean_dim_date" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\truncate_clean_dim_date"
+          TopLeft="204.66665578468,67.0333329054382" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\create_clean_dim_date"
+          TopLeft="381.333314437834,149.033332543837" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="302.26665578468,108.633332905438">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="172.266658653154,40.3999996383984"
+              Start="0,0"
+              End="172.266658653154,32.8999996383984">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.1999998191992" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.1999998191992"
+                    Point2="0,20.1999998191992"
+                    Point3="4,20.1999998191992" />
+                  <mssgle:LineSegment
+                    End="168.266658653154,20.1999998191992" />
+                  <mssgle:CubicBezierSegment
+                    Point1="168.266658653154,20.1999998191992"
+                    Point2="172.266658653154,20.1999998191992"
+                    Point3="172.266658653154,24.1999998191992" />
+                  <mssgle:LineSegment
+                    End="172.266658653154,32.8999996383984" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\load_clean_dim_date"
+          TopLeft="409.66664786223,230.166665521595" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="474.533314437834,190.633332543837">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.9333334243962,39.5333329777586"
+              Start="0,0"
+              End="23.9333334243962,32.0333329777586">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7666664888793" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.7666664888793"
+                    Point2="0,19.7666664888793"
+                    Point3="4,19.7666664888793" />
+                  <mssgle:LineSegment
+                    End="19.9333334243962,19.7666664888793" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.9333334243962,19.7666664888793"
+                    Point2="23.9333334243962,19.7666664888793"
+                    Point3="23.9333334243962,23.7666664888793" />
+                  <mssgle:LineSegment
+                    End="23.9333334243962,32.0333329777586" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load_clean_dim_date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\load_clean_dim_date\stg_dim_date"
+          TopLeft="74.6666628875668,41.8999997468789" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\load_clean_dim_date\clean_dim_date"
+          TopLeft="372.166648272012,148.166665883197" />
+        <EdgeLayout
+          Id="Package\load_clean_dim_date.Paths[OLE DB Source Output]"
+          TopLeft="145.066662887567,83.499999746879">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="303.099985384445,64.6666661363178"
+              Start="0,0"
+              End="303.099985384445,57.1666661363178">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.3333330681589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.3333330681589"
+                    Point2="0,32.3333330681589"
+                    Point3="4,32.3333330681589" />
+                  <mssgle:LineSegment
+                    End="299.099985384445,32.3333330681589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="299.099985384445,32.3333330681589"
+                    Point2="303.099985384445,32.3333330681589"
+                    Point3="303.099985384445,36.3333330681589" />
+                  <mssgle:LineSegment
+                    End="303.099985384445,57.1666661363178" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load_clean_dim_date\stg_dim_date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load_clean_dim_date\clean_dim_date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

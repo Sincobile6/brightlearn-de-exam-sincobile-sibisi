@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="0 1 load_csv_to_stg"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{4C3159C2-D937-4A6C-B981-F9F5C424CEA4}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{D3D912B7-FEF6-409E-8A55-D90AFC9B6581}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -337,13 +337,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\csv_to_raw"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{0FE8E85A-51B2-4E1D-8961-981A3EEB609A}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="csv_to_raw"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -351,7 +351,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\brightlearn_csv"
+              refId="Package\csv_to_raw\brightlearn_csv"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -371,25 +371,25 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\brightlearn_csv.Connections[FlatFileConnection]"
+                  refId="Package\csv_to_raw\brightlearn_csv.Connections[FlatFileConnection]"
                   connectionManagerID="Package.ConnectionManagers[raw_data]"
                   connectionManagerRefId="Package.ConnectionManagers[raw_data]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output]"
+                  refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_date]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_date]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_date]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_date]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_date]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_date]"
                       name="transaction_date"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -404,14 +404,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[payment_method]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[payment_method]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[payment_method]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[payment_method]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[payment_method]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[payment_method]"
                       name="payment_method"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -426,14 +426,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[cashier_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[cashier_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cashier_name]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cashier_name]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[cashier_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[cashier_name]"
                       name="cashier_name"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -448,14 +448,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_amount]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_amount]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_amount]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_amount]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_amount]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_amount]"
                       name="transaction_amount"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -470,14 +470,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_discount]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_discount]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_discount]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_discount]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_discount]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_discount]"
                       name="transaction_discount"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -492,14 +492,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_first_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_first_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_first_name]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_first_name]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_first_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_first_name]"
                       name="customer_first_name"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -514,14 +514,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_last_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_last_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_last_name]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_last_name]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_last_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_last_name]"
                       name="customer_last_name"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -536,14 +536,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_email]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_email]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_email]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_email]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_email]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_email]"
                       name="customer_email"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -558,14 +558,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_phone]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_phone]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_phone]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_phone]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_phone]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_phone]"
                       name="customer_phone"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -580,14 +580,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_city]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_city]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_city]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_city]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_city]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_city]"
                       name="customer_city"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -602,14 +602,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_province]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_province]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_province]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_province]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_province]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_province]"
                       name="customer_province"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -624,14 +624,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_loyalty_tier]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_loyalty_tier]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_loyalty_tier]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_loyalty_tier]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_loyalty_tier]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_loyalty_tier]"
                       name="customer_loyalty_tier"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -646,14 +646,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_since]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_since]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_since]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_since]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_since]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_since]"
                       name="customer_since"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -668,14 +668,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_name]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_name]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_name]"
                       name="store_name"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -690,14 +690,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_city]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_city]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_city]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_city]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_city]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_city]"
                       name="store_city"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -712,14 +712,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_province]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_province]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_province]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_province]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_province]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_province]"
                       name="store_province"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -734,14 +734,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_region]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_region]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_region]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_region]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_region]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_region]"
                       name="store_region"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -756,14 +756,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_manager]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_manager]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_manager]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_manager]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_manager]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_manager]"
                       name="store_manager"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -778,14 +778,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[product_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[product_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[product_name]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[product_name]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[product_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[product_name]"
                       name="product_name"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -800,14 +800,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[category]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[category]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[category]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[category]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[category]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[category]"
                       name="category"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -822,14 +822,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[sub_category]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[sub_category]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sub_category]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sub_category]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[sub_category]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[sub_category]"
                       name="sub_category"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -844,14 +844,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[sku]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[sku]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sku]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sku]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[sku]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[sku]"
                       name="sku"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -866,14 +866,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[unit_price]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[unit_price]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[unit_price]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[unit_price]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[unit_price]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[unit_price]"
                       name="unit_price"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -888,14 +888,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[cost_price]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[cost_price]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cost_price]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cost_price]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[cost_price]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[cost_price]"
                       name="cost_price"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -910,14 +910,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[supplier]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[supplier]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[supplier]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[supplier]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[supplier]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[supplier]"
                       name="supplier"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -932,14 +932,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[qty]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[qty]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[qty]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[qty]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[qty]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[qty]"
                       name="qty"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -954,14 +954,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[line_amount]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[line_amount]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[line_amount]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[line_amount]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[line_amount]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[line_amount]"
                       name="line_amount"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -976,14 +976,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[stock_on_hand]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[stock_on_hand]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[stock_on_hand]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[stock_on_hand]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[stock_on_hand]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[stock_on_hand]"
                       name="stock_on_hand"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -998,14 +998,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[reorder_threshold]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[reorder_threshold]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[reorder_threshold]"
+                      externalMetadataColumnId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[reorder_threshold]"
                       length="50"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[reorder_threshold]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[reorder_threshold]"
                       name="reorder_threshold"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1023,175 +1023,175 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_date]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="transaction_date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[payment_method]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[payment_method]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="payment_method" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cashier_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cashier_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="cashier_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_amount]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_amount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="transaction_amount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_discount]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[transaction_discount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="transaction_discount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_first_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_first_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_first_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_last_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_last_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_last_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_email]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_email]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_email" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_phone]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_phone]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_phone" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_city]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_city]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_city" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_province]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_province]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_province" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_loyalty_tier]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_loyalty_tier]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_loyalty_tier" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_since]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[customer_since]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_since" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_city]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_city]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_city" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_province]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_province]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_province" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_region]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_region]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_region" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_manager]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[store_manager]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_manager" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[product_name]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[product_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="product_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[category]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[category]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="category" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sub_category]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sub_category]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="sub_category" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sku]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[sku]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="sku" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[unit_price]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[unit_price]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="unit_price" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cost_price]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[cost_price]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="cost_price" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[supplier]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[supplier]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="supplier" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[qty]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[qty]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="qty" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[line_amount]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[line_amount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="line_amount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[stock_on_hand]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[stock_on_hand]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="stock_on_hand" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[reorder_threshold]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].ExternalColumns[reorder_threshold]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -1199,27 +1199,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Error Output]"
+                  refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1228,7 +1228,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\stg_brightlearn_store"
+              refId="Package\csv_to_raw\stg_brightlearn_store"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -1285,7 +1285,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\stg_brightlearn_store.Connections[OleDbConnection]"
+                  refId="Package\csv_to_raw\stg_brightlearn_store.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
                   connectionManagerRefId="Package.ConnectionManagers[RHA_NDZANI.stg_brightlearn_store]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1293,417 +1293,417 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input]"
+                  refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[transaction_date]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[transaction_date]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="transaction_date"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_date]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_date]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[payment_method]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[payment_method]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="payment_method"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[payment_method]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[payment_method]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[payment_method]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[payment_method]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[cashier_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[cashier_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="cashier_name"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cashier_name]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[cashier_name]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cashier_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[cashier_name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[transaction_amount]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[transaction_amount]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="transaction_amount"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_amount]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_amount]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_amount]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_amount]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[transaction_discount]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[transaction_discount]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="transaction_discount"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_discount]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_discount]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_discount]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[transaction_discount]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_first_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_first_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_first_name"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_first_name]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_first_name]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_first_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_first_name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_last_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_last_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_last_name"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_last_name]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_last_name]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_last_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_last_name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_email]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_email"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_email]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_email]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_phone]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_phone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_phone"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_phone]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_phone]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_phone]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_phone]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_city]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_city"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_city]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_city]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_city]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_city]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_province]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_province]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_province"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_province]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_province]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_province]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_province]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_loyalty_tier]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_loyalty_tier]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_loyalty_tier"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_loyalty_tier]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_loyalty_tier]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_loyalty_tier]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_loyalty_tier]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_since]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[customer_since]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="customer_since"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_since]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_since]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_since]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[customer_since]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="store_name"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_name]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_city]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="store_city"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_city]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_city]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_city]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_city]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_province]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_province]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="store_province"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_province]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_province]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_province]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_province]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_region]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_region]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="store_region"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_region]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_region]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_region]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_region]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_manager]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[store_manager]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="store_manager"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_manager]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_manager]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_manager]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[store_manager]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[product_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[product_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="product_name"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[product_name]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[product_name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[category]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[category]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="category"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[category]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[category]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[category]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[sub_category]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[sub_category]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="sub_category"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sub_category]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[sub_category]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sub_category]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[sub_category]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[sku]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[sku]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="sku"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sku]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[sku]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sku]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[sku]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[unit_price]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[unit_price]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="unit_price"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[unit_price]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[unit_price]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[cost_price]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[cost_price]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="cost_price"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cost_price]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[cost_price]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cost_price]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[cost_price]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[supplier]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[supplier]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="supplier"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[supplier]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[supplier]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[supplier]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[supplier]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[qty]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[qty]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="qty"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[qty]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[qty]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[qty]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[qty]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[line_amount]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[line_amount]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="line_amount"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[line_amount]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[line_amount]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[line_amount]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[line_amount]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[stock_on_hand]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[stock_on_hand]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="stock_on_hand"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[stock_on_hand]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[stock_on_hand]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[stock_on_hand]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[stock_on_hand]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[reorder_threshold]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].Columns[reorder_threshold]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="reorder_threshold"
-                      externalMetadataColumnId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[reorder_threshold]"
-                      lineageId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output].Columns[reorder_threshold]" />
+                      externalMetadataColumnId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[reorder_threshold]"
+                      lineageId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output].Columns[reorder_threshold]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="transaction_date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[payment_method]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[payment_method]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="payment_method" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cashier_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cashier_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="cashier_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_amount]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_amount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="transaction_amount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_discount]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[transaction_discount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="transaction_discount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_first_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_first_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_first_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_last_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_last_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_last_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_email" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_phone]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_phone]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_phone" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_city]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_city]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_city" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_province]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_province]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_province" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_loyalty_tier]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_loyalty_tier]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_loyalty_tier" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_since]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[customer_since]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="customer_since" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_city]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_city]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_city" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_province]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_province]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_province" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_region]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_region]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_region" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_manager]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[store_manager]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="store_manager" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="product_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[category]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="category" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sub_category]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sub_category]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="sub_category" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sku]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[sku]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="sku" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="unit_price" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cost_price]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[cost_price]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="cost_price" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[supplier]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[supplier]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="supplier" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[qty]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[qty]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="qty" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[line_amount]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[line_amount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="line_amount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[stock_on_hand]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[stock_on_hand]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="stock_on_hand" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[reorder_threshold]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input].ExternalColumns[reorder_threshold]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -1713,22 +1713,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\stg_brightlearn_store.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\csv_to_raw\stg_brightlearn_store.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\csv_to_raw\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\csv_to_raw\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\csv_to_raw\stg_brightlearn_store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1739,10 +1739,10 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
-              endId="Package\Data Flow Task\stg_brightlearn_store.Inputs[OLE DB Destination Input]"
+              refId="Package\csv_to_raw.Paths[Flat File Source Output]"
+              endId="Package\csv_to_raw\stg_brightlearn_store.Inputs[OLE DB Destination Input]"
               name="Flat File Source Output"
-              startId="Package\Data Flow Task\brightlearn_csv.Outputs[Flat File Source Output]" />
+              startId="Package\csv_to_raw\brightlearn_csv.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1773,7 +1773,7 @@
       DTS:From="Package\truncate_raw_data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Data Flow Task" />
+      DTS:To="Package\csv_to_raw" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1788,8 +1788,8 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Data Flow Task"
+          Size="131.2,41.6"
+          Id="Package\csv_to_raw"
           TopLeft="207.166655648086,135.499999095996" />
         <NodeLayout
           Size="164.8,41.6"
@@ -1801,26 +1801,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="144.466656740838,58.3999990959962"
+              EndConnector="134.866656740838,58.399999095996"
               Start="0,0"
-              End="144.466656740838,50.8999990959962">
+              End="134.866656740838,50.899999095996">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.1999995479981" />
+                    End="0,25.199999547998" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.1999995479981"
-                    Point2="0,29.1999995479981"
-                    Point3="4,29.1999995479981" />
+                    Point1="0,25.199999547998"
+                    Point2="0,29.199999547998"
+                    Point3="4,29.199999547998" />
                   <mssgle:LineSegment
-                    End="140.466656740838,29.1999995479981" />
+                    End="130.866656740838,29.199999547998" />
                   <mssgle:CubicBezierSegment
-                    Point1="140.466656740838,29.1999995479981"
-                    Point2="144.466656740838,29.1999995479981"
-                    Point3="144.466656740838,33.1999995479981" />
+                    Point1="130.866656740838,29.199999547998"
+                    Point2="134.866656740838,29.199999547998"
+                    Point3="134.866656740838,33.199999547998" />
                   <mssgle:LineSegment
-                    End="144.466656740838,50.8999990959962" />
+                    End="134.866656740838,50.899999095996" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1833,20 +1833,20 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\csv_to_raw">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="148.8,41.6"
-          Id="Package\Data Flow Task\brightlearn_csv"
+          Id="Package\csv_to_raw\brightlearn_csv"
           TopLeft="5.5,5.5" />
         <NodeLayout
           Size="176,41.6"
-          Id="Package\Data Flow Task\stg_brightlearn_store"
+          Id="Package\csv_to_raw\stg_brightlearn_store"
           TopLeft="229.666656057868,118.699999421438" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          Id="Package\csv_to_raw.Paths[Flat File Source Output]"
           TopLeft="79.9,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1883,7 +1883,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\stg_brightlearn_store">
+    design-time-name="Package\csv_to_raw\stg_brightlearn_store">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
