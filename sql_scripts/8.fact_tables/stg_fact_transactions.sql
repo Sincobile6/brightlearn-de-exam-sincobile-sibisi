@@ -1,12 +1,7 @@
-CREATE OR ALTER PROCEDURE [dbo].[sp_create_stg_fact_transactions]
-
-AS
-BEGIN
-
 
 
 IF OBJECT_ID('[stg_brightlearn_store].[dbo].[stg_fact_transactions]', 'U') IS NOT NULL
-    
+    DROP TABLE [stg_brightlearn_store].[dbo].[stg_fact_transactions];
 
 CREATE TABLE [stg_brightlearn_store].[dbo].[stg_fact_transactions](
     [Transaction_ID] INT IDENTITY(1,1) PRIMARY KEY,
@@ -25,10 +20,10 @@ CREATE TABLE [stg_brightlearn_store].[dbo].[stg_fact_transactions](
     [stock_on_hand] DECIMAL(18,2) NULL,
     [reorder_threshold] DECIMAL(18,2) NULL,
     [load_date] DATETIME DEFAULT GETDATE()
-)
+);
+GO
 
-
-INSERT INTO   [stg_brightlearn_store].[dbo].[stg_fact_transactions](
+INSERT INTO [stg_brightlearn_store].[dbo].[stg_fact_transactions](
     Store_ID,
     Product_ID,
     Customer_ID,
@@ -51,14 +46,14 @@ SELECT DISTINCT
     sup.Supplier_ID,
     pay.Payment_ID,
     d.Date_ID,
-    transaction_amount,
-   transaction_discount,
-    unit_price,
-     cost_price,
-     qty,
-    line_amount,
-    stock_on_hand,
-     reorder_threshold
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.transaction_amount)), '')) AS transaction_amount,
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.transaction_discount)), '')) AS transaction_discount,
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.unit_price)), '')) AS unit_price,
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.cost_price)), '')) AS cost_price,
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.qty)), '')) AS qty,
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.line_amount)), '')) AS line_amount,
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.stock_on_hand)), '')) AS stock_on_hand,
+    TRY_CONVERT(DECIMAL(18,2), NULLIF(LTRIM(RTRIM(r.reorder_threshold)), '')) AS reorder_threshold
 FROM [stg_brightlearn_store].[dbo].[raw_data] AS r
 INNER JOIN [stg_brightlearn_store].[dbo].[stg_dim_store] AS sto
     ON sto.store_name = r.store_name
@@ -85,11 +80,8 @@ INNER JOIN [stg_brightlearn_store].[dbo].[stg_dim_payment] AS pay
     ON pay.payment_method = r.payment_method
 INNER JOIN [stg_brightlearn_store].[dbo].[stg_dim_date] AS d
     ON d.transaction_date = r.transaction_date;
-
+GO
 
 SELECT *
-FROM [stg_brightlearn_store].[dbo].[stg_fact_transactions]
+FROM [stg_brightlearn_store].[dbo].[stg_fact_transactions];
 
-
-
-end;

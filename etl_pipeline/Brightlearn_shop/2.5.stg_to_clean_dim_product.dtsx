@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{4C2FE91E-0EDB-469B-8C6A-2B7268970583}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{99B57D88-B1E6-471D-84A8-5572A11078D2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -45,7 +45,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2476ED60-BD67-48BA-A318-1EA7A779B78D}"
-          SQLTask:SqlStatementSource="CREATE OR ALTER PROCEDURE [dbo].[sp_create_clean_dim_product]&#xA;&#xA;AS&#xA;BEGIN&#xA;IF NOT EXISTS (select * from information_schema.tables where table_name = '[clean_dim_product]')&#xA;&#xA;&#xA;&#xA;create table [stg_brightlearn_store].[dbo].[clean_dim_product](&#xA;    [Store_ID] INT IDENTITY(1,1) PRIMARY KEY,&#xA;&#x9;[product_name] [varchar](50) NULL,&#xA;&#x9;[category] [varchar](50) NULL,&#xA;&#x9;[sub_category] [varchar](50) NULL,&#xA;&#x9;[sku] [varchar](50) NULL,&#xA;    [Load_date] DATETIME DEFAULT GETDATE()&#xA;  )&#xA;&#xA;  --insert data into table&#xA;&#xA;  insert into [stg_brightlearn_store].[dbo].[clean_dim_product] (&#xA;  product_name,&#xA;  category,&#xA;  sub_category,&#xA;  sku&#xA;  &#xA;             &#xA;              )&#xA;select &#xA;  product_name,&#xA;  COALESCE(NULLIF(TRIM(category),'  '), 'N/A') as category,&#xA;  sub_category,&#xA;  sku&#xA;  &#xA;from [stg_brightlearn_store].[dbo].[stg_dim_product]&#xA;&#xA;&#xA;---view data in table &#xA;&#xA;select * &#xA;from [stg_brightlearn_store].[dbo].[clean_dim_product]&#xA; END;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="CREATE OR ALTER PROCEDURE [dbo].[sp_create_clean_dim_product]&#xA;&#xA;AS&#xA;BEGIN&#xA;IF NOT EXISTS (select * from information_schema.tables where table_name = '[clean_dim_product]')&#xA;&#xA;&#xA;&#xA;create table [stg_brightlearn_store].[dbo].[clean_dim_product](&#xA;    [Product_ID] INT IDENTITY(1,1) PRIMARY KEY,&#xA;&#x9;[product_name] [varchar](50) NULL,&#xA;&#x9;[category] [varchar](50) NULL,&#xA;&#x9;[sub_category] [varchar](50) NULL,&#xA;&#x9;[sku] [varchar](50) NULL,&#xA;    [Load_date] DATETIME DEFAULT GETDATE()&#xA;  )&#xA;&#xA;  --insert data into table&#xA;&#xA;  insert into [stg_brightlearn_store].[dbo].[clean_dim_product] (&#xA;  product_name,&#xA;  category,&#xA;  sub_category,&#xA;  sku&#xA;  &#xA;             &#xA;              )&#xA;select &#xA;  product_name,&#xA;  COALESCE(NULLIF(TRIM(category),'  '), 'N/A') as category,&#xA;  sub_category,&#xA;  sku&#xA;  &#xA;from [stg_brightlearn_store].[dbo].[stg_dim_product]&#xA;&#xA;&#xA;---view data in table &#xA;&#xA;select * &#xA;from [stg_brightlearn_store].[dbo].[clean_dim_product]&#xA; END;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -170,10 +170,6 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\load_clean_dim_product\clean_dim_product.Inputs[OLE DB Destination Input].ExternalColumns[Store_ID]"
-                      dataType="i4"
-                      name="Store_ID" />
-                    <externalMetadataColumn
                       refId="Package\load_clean_dim_product\clean_dim_product.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
                       codePage="1252"
                       dataType="str"
@@ -198,9 +194,13 @@
                       length="50"
                       name="sku" />
                     <externalMetadataColumn
-                      refId="Package\load_clean_dim_product\clean_dim_product.Inputs[OLE DB Destination Input].ExternalColumns[Load_date]"
+                      refId="Package\load_clean_dim_product\clean_dim_product.Inputs[OLE DB Destination Input].ExternalColumns[Product_ID]"
+                      dataType="i4"
+                      name="Product_ID" />
+                    <externalMetadataColumn
+                      refId="Package\load_clean_dim_product\clean_dim_product.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
                       dataType="dbTimeStamp"
-                      name="Load_date" />
+                      name="load_date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -479,10 +479,6 @@ from [stg_brightlearn_store].[dbo].[stg_dim_product]</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="209.6,41.6"
-          Id="Package\truncate_clean_dim_product"
-          TopLeft="184.999989892046,150.799998951356" />
-        <NodeLayout
           Size="200.8,41.6"
           Id="Package\create_clean_dim_product"
           TopLeft="446.666642261877,249.599998264313" />
@@ -490,6 +486,10 @@ from [stg_brightlearn_store].[dbo].[stg_dim_product]</property>
           Size="192,41.6"
           Id="Package\load_clean_dim_product"
           TopLeft="769.166624641255,259.133331531352" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\truncate_clean_dim_product"
+          TopLeft="184.999989892046,150.799998951356" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="289.799989892046,192.399998951356">
@@ -567,13 +567,13 @@ from [stg_brightlearn_store].[dbo].[stg_dim_product]</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\load_clean_dim_product\stg_dim_product"
-          TopLeft="22.1666657560402,30.6333331585593" />
-        <NodeLayout
           Size="166.4,41.6"
           Id="Package\load_clean_dim_product\clean_dim_product"
           TopLeft="420.499978964528,91.8333329415984" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\load_clean_dim_product\stg_dim_product"
+          TopLeft="22.1666657560402,30.6333331585593" />
         <EdgeLayout
           Id="Package\load_clean_dim_product.Paths[OLE DB Source Output]"
           TopLeft="177.36666575604,51.4333331585593">
@@ -612,14 +612,6 @@ from [stg_brightlearn_store].[dbo].[stg_dim_product]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\load_clean_dim_product\stg_dim_product">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\load_clean_dim_product\clean_dim_product">
     <Properties>
       <Property>
@@ -629,6 +621,14 @@ from [stg_brightlearn_store].[dbo].[stg_dim_product]</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load_clean_dim_product\stg_dim_product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

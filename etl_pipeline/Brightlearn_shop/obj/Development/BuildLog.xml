@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>Brightlearn_shop</Name>
-    <LastWriteTime>2026-07-17T14:04:30.0215045Z</LastWriteTime>
+    <LastWriteTime>2026-07-21T18:27:19.3189507Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -73,17 +73,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>1.5.create_load_stg_dim_product.dtsx</Name>
-      <LastWriteTime>2026-07-17T11:51:01.8291365Z</LastWriteTime>
+      <LastWriteTime>2026-07-20T18:27:16.3187709Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>2.5.stg_to_clean_dim_product.dtsx</Name>
-      <LastWriteTime>2026-07-17T11:55:41.5134509Z</LastWriteTime>
+      <LastWriteTime>2026-07-20T18:27:16.2649067Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>3.5.clean_to_dwh_dim_product.dtsx</Name>
-      <LastWriteTime>2026-07-17T15:54:05.0423143Z</LastWriteTime>
+      <LastWriteTime>2026-07-20T18:33:16.4062709Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -99,6 +99,26 @@
     <ProjectBuildItemInfo>
       <Name>3.6.clean_to_dwh_dim_payment.dtsx</Name>
       <LastWriteTime>2026-07-17T14:04:29.984504Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>1.7.create_load_stg_fact.dtsx</Name>
+      <LastWriteTime>2026-07-21T17:30:53.3877475Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>2.7.stg_to_clean_fact_transactions.dtsx</Name>
+      <LastWriteTime>2026-07-21T17:46:32.9982497Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>3.7.clean_to_dwh_fact_transactions.dtsx</Name>
+      <LastWriteTime>2026-07-21T17:55:18.7098077Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Master_ETL.dtsx</Name>
+      <LastWriteTime>2026-07-21T18:27:19.2152646Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
